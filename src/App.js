@@ -16,11 +16,11 @@ class App extends Component {
   handleSort = event => {
     let columnArr=["name","phone","email","dob"];
     var str = event.target.innerHTML;
-    console.log(str);
+    
     let sortColumnName = str.slice(0, str.search("<")-1).toLowerCase();
-    console.log(sortColumnName);
+    
     let sortColumn=columnArr.indexOf(sortColumnName);
-    console.log(sortColumn);
+    
     let sortState = this.state.sortColumn;
     let searchP = this.state.searchParam;
     let employees = [];
@@ -38,7 +38,7 @@ class App extends Component {
       searchP = "";
       document.querySelector("input").value = "";
     }
-    console.log(sortState)
+    
     this.setState({ employees: employees, sortColumn: sortState, searchParam: searchP });
   }
 
