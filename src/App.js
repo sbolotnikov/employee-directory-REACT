@@ -59,7 +59,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Title><input type="text" onChange={this.handleSearch} /></Title>
+        <Title><input type="text" placeholder="Search" onChange={this.handleSearch} /></Title>
         <Wrapper>
 
           <table >
