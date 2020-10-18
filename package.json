@@ -2,6 +2,7 @@
   "name": "employee-directory-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sbolotnikov.github.io/employee-directory-react",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/react-fontawesome": "^0.1.11",
