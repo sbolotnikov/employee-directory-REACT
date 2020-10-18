@@ -4,6 +4,7 @@ import SortName from './components/SortName';
 import Wrapper from './components/Wrapper';
 import Title from './components/Title';
 import populateTab from './employee_seed';
+// getting random employee records
 var employeesOriginal = populateTab();
 
 class App extends Component {
@@ -12,18 +13,19 @@ class App extends Component {
     searchParam: "",
     sortColumn: [0, 0, 0, 0]
   }
-
+// this function handles 4 categories sorting ascending, descending or no sorting
   handleSort = event => {
     let columnArr=["name","phone","email","dob"];
     var str = event.target.innerHTML;
-    
+    // based on event it finds name of the category
     let sortColumnName = str.slice(0, str.search("<")-1).toLowerCase();
-    
+    // then it retrieves category index
     let sortColumn=columnArr.indexOf(sortColumnName);
-    
+    // save state
     let sortState = this.state.sortColumn;
     let searchP = this.state.searchParam;
     let employees = [];
+    // sorting up,down and default case
     if (sortState[sortColumn] === 0) {
       sortState = [0, 0, 0, 0];
       employees = this.state.employees.sort((a, b) => (a[sortColumnName] > b[sortColumnName]) ? 1 : -1);
@@ -41,10 +43,11 @@ class App extends Component {
     
     this.setState({ employees: employees, sortColumn: sortState, searchParam: searchP });
   }
-
+// search filtering function. 
   handleSearch = event => {
     var searchParam = event.target.value;
     if (searchParam.length > 0) {
+      // it check for arrearance of some keys combination and checking it in 4 different categories
       const employees = employeesOriginal.filter(employee =>
         (employee.name.toLowerCase().indexOf(searchParam.toLowerCase()) >= 0) ||
         (employee.email.toLowerCase().indexOf(searchParam.toLowerCase()) >= 0) ||
@@ -53,6 +56,7 @@ class App extends Component {
       this.setState({ employees: employees, searchParam: searchParam })
     }
     else {
+      // if there is no records found it shows default values
       this.setState({ employees: employeesOriginal, searchParam: "" })
     }
   }
@@ -66,6 +70,7 @@ class App extends Component {
             <thead>
               <tr>
                 <th>Image</th>
+                {/* SortName indicates symbol of the current sorting */}
                 <th onClick={this.handleSort}>Name <SortName status={this.state.sortColumn[0]} /></th>
                 <th onClick={this.handleSort}>Phone <SortName status={this.state.sortColumn[1]} /></th>
                 <th onClick={this.handleSort}>Email <SortName status={this.state.sortColumn[2]} /></th>

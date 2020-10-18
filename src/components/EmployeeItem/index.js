@@ -12,6 +12,7 @@ class EmployeeItem extends Component {
         </td>
         <td>{props.name}</td>
         <td>{props.phone}</td>
+        {/* posibility to send email to employee */}
         <td><a href={"mailto:"+props.email}>{props.email}</a></td>
         <td>{props.dob}</td>
       </tr>
