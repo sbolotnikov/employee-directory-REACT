@@ -14,7 +14,7 @@ th {
   padding-bottom: 1.5rem;
   border: 4px, black;
   background-color: whitesmoke;
-
+  cursor: pointer;
 }
 tr:nth-child(2n){
   background-color: whitesmoke;

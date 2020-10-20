@@ -13,37 +13,39 @@ class App extends Component {
     searchParam: "",
     sortColumn: [0, 0, 0, 0]
   }
-// this function handles 4 categories sorting ascending, descending or no sorting
+  // this function handles 4 categories sorting ascending, descending or no sorting
   handleSort = event => {
-    let columnArr=["name","phone","email","dob"];
+    let columnArr = ["name", "phone", "email", "dob"];
     var str = event.target.innerHTML;
     // based on event it finds name of the category
-    let sortColumnName = str.slice(0, str.search("<")-1).toLowerCase();
+    let sortColumnName = str.slice(0, str.search("<") - 1).toLowerCase();
     // then it retrieves category index
-    let sortColumn=columnArr.indexOf(sortColumnName);
+    let sortColumn = columnArr.indexOf(sortColumnName);
     // save state
-    let sortState = this.state.sortColumn;
-    let searchP = this.state.searchParam;
-    let employees = [];
-    // sorting up,down and default case
-    if (sortState[sortColumn] === 0) {
-      sortState = [0, 0, 0, 0];
-      employees = this.state.employees.sort((a, b) => (a[sortColumnName] > b[sortColumnName]) ? 1 : -1);
-      sortState[sortColumn] = 1;
-    } else if (sortState[sortColumn] === 1) {
-      sortState = [0, 0, 0, 0];
-      employees = this.state.employees.sort((a, b) => (a[sortColumnName] < b[sortColumnName]) ? 1 : -1);
-      sortState[sortColumn] = 2;
-    } else if (sortState[sortColumn] === 2) {
-      sortState = [0, 0, 0, 0];
-      employees = employeesOriginal;
-      searchP = "";
-      document.querySelector("input").value = "";
+    if (!(sortColumn === -1)) {
+      let sortState = this.state.sortColumn;
+      let searchP = this.state.searchParam;
+      let employees = [];
+      // sorting up,down and default case
+      if (sortState[sortColumn] === 0) {
+        sortState = [0, 0, 0, 0];
+        employees = this.state.employees.sort((a, b) => (a[sortColumnName] > b[sortColumnName]) ? 1 : -1);
+        sortState[sortColumn] = 1;
+      } else if (sortState[sortColumn] === 1) {
+        sortState = [0, 0, 0, 0];
+        employees = this.state.employees.sort((a, b) => (a[sortColumnName] < b[sortColumnName]) ? 1 : -1);
+        sortState[sortColumn] = 2;
+      } else if (sortState[sortColumn] === 2) {
+        sortState = [0, 0, 0, 0];
+        employees = employeesOriginal;
+        searchP = "";
+        document.querySelector("input").value = "";
+      }
+
+      this.setState({ employees: employees, sortColumn: sortState, searchParam: searchP });
     }
-    
-    this.setState({ employees: employees, sortColumn: sortState, searchParam: searchP });
   }
-// search filtering function. 
+  // search filtering function. 
   handleSearch = event => {
     var searchParam = event.target.value;
     if (searchParam.length > 0) {
@@ -74,7 +76,7 @@ class App extends Component {
                 <th onClick={this.handleSort}>Name <SortName status={this.state.sortColumn[0]} /></th>
                 <th onClick={this.handleSort}>Phone <SortName status={this.state.sortColumn[1]} /></th>
                 <th onClick={this.handleSort}>Email <SortName status={this.state.sortColumn[2]} /></th>
-                <th onClick={this.handleSort} >DOB <SortName status={this.state.sortColumn[3]} /></th>
+                <th onClick={this.handleSort}>DOB <SortName status={this.state.sortColumn[3]} /></th>
               </tr>
             </thead>
             <tbody>
