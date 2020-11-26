@@ -14,7 +14,7 @@ module.exports = function populateTab() {
             'year':(moment().get('year')-Math.floor(Math.random()*47)-18),
             'month':Math.floor(Math.random()*12), 
             'date':Math.floor(Math.random()*30)}).format("YYYY-MM-DD"),
-            image: faker.image.avatar()
+            image: faker.random.image()
         })
         
     }
