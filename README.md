@@ -29,9 +29,7 @@ Simply clone the repo. To run locally
  or visit the deployed page link to begin usage.
 ## Usage 
 Visit the deployed page [link](https://sbolotnikov.github.io/employee-directory-react/)
-
-Some friendly reminder. No need to click on Image header
-![employee-directory-react](./images/img.png) 
+ 
 Overall page look with sorting by phone number ascending
 ![employee-directory-react](./images/img1.png) 
 Example of sorting by email descending
@@ -52,7 +50,7 @@ Example of sorting by date of birth ascending
  You can see more of my Projects on my [GitHub profile](https://github.com/sbolotnikov) 
 
  Contact [sbolotnikov](mailto:sbolotnikov@gmail.com) 
-## Review 
+## Useful links
   * Here is this repo link: https://github.com/sbolotnikov/employee-directory-react
  
   * Link: [ Employee Directory](https://sbolotnikov.github.io/employee-directory-react)
